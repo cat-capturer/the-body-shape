@@ -1,0 +1,16 @@
+name: Geometry tests
+on: [push, pull_request]
+jobs:
+  geometry:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python: ['3.10', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install 'numpy>=1.24,<2'
+      - run: python -m unittest discover -s tests -v
+      - run: python realsense_pose_surface/run_realsense_pose_surface.py --help

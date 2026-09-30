@@ -1,5 +1,7 @@
-mediapipe>=0.10.14
-numpy>=1.24
-opencv-python>=4.8
-open3d>=0.18
-pyrealsense2>=2.55
+# The current estimator uses mp.solutions.pose (removed in newer MediaPipe).
+mediapipe==0.10.21
+numpy>=1.24,<2
+# MediaPipe already depends on contrib; avoid two packages owning cv2.
+opencv-contrib-python>=4.8,<4.12
+open3d>=0.18,<0.20
+pyrealsense2>=2.55,<3
